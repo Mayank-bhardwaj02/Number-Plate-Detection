@@ -42,9 +42,18 @@ while True:
             cv2.rectangle(frame , (x,y), (x+w,y+h), (0,255,0), 2)
             cv2.putText(frame, "Number Plate", (x,y-5), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1,(255,0,0),2)
 
+            image_roi = frame[y:y+h, x:x+w]
+            cv2.imshow("ROI", image_roi)
+
     cv2.imshow("Result", frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+    
+    if cv2.waitKey(1) & 0xFF == ord('v'):
+        cv2.imwrite("plates/detected_plate" + str(count) + ".jpg", image_roi)
+        cv2.rectangle(frame, (0,200), (640,300), (0,255,0), cv2.FILLED)
+        cv2.putText(frame, "Plate Saved", (150, 265), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (255, 0, 0), 2)
+        cv2.imshow("Results",frame)
+        cv2.waitKey(500)
+        count += 1
 
 cap.release()
 cv2.destroyAllWindows()
