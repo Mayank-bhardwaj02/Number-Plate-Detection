@@ -20,5 +20,5 @@ The project uses the OpenCV library to capture video frames and applies the Haar
    conda install -c conda-forge opencv
 3) Run the script to start video capture and detect number plates:
    ```
-   python detect_number_plate.py
+   python PlateDetection.py
 4) Adjust parameters (e.g., scaleFactor, minNeighbours) to improve detection accuracy if needed.
